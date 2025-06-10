@@ -1,7 +1,13 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "jsx": "react",
     "strict": true,
-    "allowJs": true 
-  }
+    "allowJs": true,
+    "checkJs": true,              
+    "noEmit": true                
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules"]
 }
+
