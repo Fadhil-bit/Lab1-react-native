@@ -7,5 +7,7 @@ export default function HomeScreen() {
       <Text style={{ fontSize: 24, marginBottom: 20 }}>Welcome to the Fruit App!</Text>
       <FruitList />
     </View>
+
+   
   );
 }
