@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import Increment from '../../components/increment';
 import Decrement from '../../components/decrement';
