@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, Pressable, StyleSheet } from 'react-native';
 
-
 interface DecrementProps {
   count: number;
   onDecrement: () => void;
@@ -9,26 +8,35 @@ interface DecrementProps {
 
 export default function Decrement({ count, onDecrement }: DecrementProps) {
   return (
-    <View style={{ margin: 10 }}>
-    <Pressable onPress={onDecrement}>
-     <Text style={styles.buttonText}> - Decrement</Text>
-    </Pressable></View>
+    <Pressable 
+      style={({ pressed }) => [
+        styles.button,
+        pressed && styles.buttonPressed
+      ]}
+      onPress={onDecrement}
+    >
+      <Text style={styles.buttonText}>Decrement</Text>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#f44336', // red
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    backgroundColor: 'white',
+    paddingHorizontal: 40,
+    paddingVertical: 15,
     borderRadius: 8,
-    alignItems: 'center',
-    elevation: 2,
+    minWidth: 160,
+    marginVertical: 8,
+  },
+  buttonPressed: {
+    backgroundColor: 'lightcoral',
+    transform: [{ scale: 0.98 }],
   },
   buttonText: {
     color: 'black',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '600',
     textAlign: 'center',
   },
 });

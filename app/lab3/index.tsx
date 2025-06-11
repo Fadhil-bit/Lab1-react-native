@@ -1,39 +1,78 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Pressable, Button } from 'react-native';
 import Increment from '../../components/increment';
 import Decrement from '../../components/decrement';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import React from 'react';
 import { router } from 'expo-router';
 
 export default function Lab3() {
   const [counter, setCounter] = useState<number>(0);
 
   const incrementCount = (): void => {
-    setCounter((prevCount: number) => prevCount + 1);
+    setCounter(prevCount => prevCount + 1);
   };
 
   const decrementCount = (): void => {
-    setCounter((prevCount: number) => prevCount - 1);
+
+    // if (counter <= 0) {
+    //   return;
+    // } // Wont allow to decrement below 0
+
+    setCounter(prevCount => prevCount - 1);
   };
 
   return (
-    <View>
-      <Increment count={counter} onIncrement={incrementCount} />
-      <Decrement count={counter} onDecrement={decrementCount} />
-      <Text style={{ margin: 10, alignContent: 'center' }}>Counter: {counter}</Text>
-    
-
-    <View style={styles.buttonContainer}>
-        <Button title="Go back Home" onPress={() => router.push("/")} />
+    <View style={styles.container}>
+      <View>
+        <Increment count={counter} onIncrement={incrementCount} />
+        
+        <Decrement count={counter} onDecrement={decrementCount} />
+        
+        <View style={styles.counterContainer}>
+          <Text style={styles.counterText}>Counter: {counter}</Text>
+        </View>
+        
+        <View style={styles.buttonContainer}>
+          <Button title="Go back Home" onPress={() => router.push("/")} />
+        </View>
+        
       </View>
-    
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, marginBottom: 10 },
-  image: { width: 200, height: 200 },
-  buttonContainer: { marginTop: 20 },
+  container: {
+    flex: 1000,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  counterContainer: {
+    backgroundColor: 'lightgray',
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    borderRadius: 8,
+    minWidth: 160,
+    marginVertical: 8,
+  },
+  counterText: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  homeButton: {
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  homeButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
 });

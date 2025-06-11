@@ -19,7 +19,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  container: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: 'white'},
   title: { fontSize: 24, marginBottom: 10 },
   image: { width: 200, height: 200 },
   buttonContainer: { marginTop: 20 },
